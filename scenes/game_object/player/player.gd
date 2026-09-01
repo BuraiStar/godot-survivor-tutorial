@@ -4,6 +4,7 @@ const MAX_SPEED = 125
 const ACCELERATION_SMOOTHING = 25
 
 @onready var damage_interval_timer = $DamageIntervalTimer
+@onready var dash_interval_timer = $DashIntervalTimer
 @onready var health_component = $HealthComponent
 @onready var health_bar = $HealthBar
 @onready var abilities = $Abilities
@@ -14,14 +15,17 @@ const ACCELERATION_SMOOTHING = 25
 
 var number_colliding_bodies := 0
 var base_speed := 0
+var dashable := true;
+var direction := Vector2.ZERO
 
 
 func _ready():
 	base_speed = velocity_component.max_speed
-	
+
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
+	dash_interval_timer.timeout.connect(on_dash_interval_timer_timeout)
 	health_component.health_changed.connect(on_health_changed)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	update_health_display()
@@ -29,8 +33,14 @@ func _ready():
 
 func _process(delta):
 	var movement_vector = get_movement_vector()
-	var direction = movement_vector.normalized()
-	velocity_component.accelerate_in_direction(direction)
+	direction = movement_vector.normalized()
+	var dash = 1;
+	if direction != Vector2.ZERO:
+		if Input.is_action_just_pressed("dash") and dashable:
+			dash = 75;
+			dashable = false;
+			dash_interval_timer.start();
+	velocity_component.accelerate_in_direction(direction * dash)
 	velocity_component.move(self)
 	
 	if movement_vector.x != 0 || movement_vector.y != 0:
@@ -47,7 +57,7 @@ func get_movement_vector():
 	var x_movement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var y_movement = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	
-	return Vector2(x_movement, y_movement)
+	return Vector2(x_movement , y_movement)
 
 
 func check_deal_damage():
@@ -62,9 +72,7 @@ func check_deal_damage():
 func update_health_display():
 	health_bar.value = health_component.get_health_percent()
 
-
 #---------------------------------------------
-
 
 func on_body_entered(other_body: Node2D):
 	number_colliding_bodies += 1
@@ -77,6 +85,9 @@ func on_body_exited(other_body: Node2D):
 
 func on_damage_interval_timer_timeout():
 	check_deal_damage()
+	
+func on_dash_interval_timer_timeout():
+	dashable = true;
 
 
 func on_health_changed():

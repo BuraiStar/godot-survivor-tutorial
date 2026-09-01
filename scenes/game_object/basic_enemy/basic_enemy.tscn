@@ -1,13 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://bses7vk27cfvt"]
+[gd_scene format=3 uid="uid://bses7vk27cfvt"]
 
-[ext_resource type="Script" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_gpcli"]
+[ext_resource type="Script" uid="uid://3as0rdp7qgtt" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_gpcli"]
 [ext_resource type="Texture2D" uid="uid://cc6p0wg3ww2jf" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_m80w1"]
 [ext_resource type="PackedScene" uid="uid://d32bhk07dm6w8" path="res://scenes/component/health_component.tscn" id="2_en8ir"]
 [ext_resource type="PackedScene" uid="uid://ci3popyfx4vbv" path="res://scenes/component/vial_drop_component.tscn" id="3_v8t1l"]
 [ext_resource type="PackedScene" uid="uid://cn4jjvvblm8lp" path="res://scenes/component/velocity_component.tscn" id="4_7n42o"]
 [ext_resource type="PackedScene" uid="uid://gsyk0iqo1m50" path="res://scenes/component/hurtbox_component.tscn" id="4_e2gan"]
 [ext_resource type="PackedScene" uid="uid://cjxiijis5jocn" path="res://scenes/component/death_component.tscn" id="4_j8jii"]
-[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_jhg8v"]
+[ext_resource type="Shader" uid="uid://d3afv0xf6orfn" path="res://scenes/component/hit_flash_component.gdshader" id="6_jhg8v"]
 [ext_resource type="PackedScene" uid="uid://bkkq5ohgbnkxw" path="res://scenes/component/hit_flash_component.tscn" id="7_4kqgf"]
 [ext_resource type="PackedScene" uid="uid://bh478361trp2r" path="res://scenes/component/random_audio_stream_player_2d_component.tscn" id="10_74ju1"]
 [ext_resource type="AudioStream" uid="uid://ckjo8r6fns8s1" path="res://assets/audio/footstep_carpet_000.ogg" id="10_d8kjc"]
@@ -74,11 +74,16 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xajbr"]
 _data = {
-"RESET": SubResource("Animation_lm0tv"),
-"walk": SubResource("Animation_vwo2u")
+&"RESET": SubResource("Animation_lm0tv"),
+&"walk": SubResource("Animation_vwo2u")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ollop"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jimn8"]
+resource_local_to_scene = true
+shader = ExtResource("6_jhg8v")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qku51"]
 resource_local_to_scene = true
 shader = ExtResource("6_jhg8v")
 shader_parameter/lerp_percent = 0.0
@@ -89,53 +94,56 @@ radius = 13.0384
 [sub_resource type="CircleShape2D" id="CircleShape2D_5o3ap"]
 radius = 5.0
 
-[node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
+[node name="BasicEnemy" type="CharacterBody2D" unique_id=419712174 groups=["enemy"]]
 collision_layer = 8
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_gpcli")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_xajbr")
-}
-autoplay = "walk"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=891213626]
+libraries/ = SubResource("AnimationLibrary_xajbr")
+autoplay = &"walk"
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_en8ir")]
+[node name="HealthComponent" parent="." unique_id=482236231 instance=ExtResource("2_en8ir")]
 
-[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_v8t1l")]
+[node name="GoldDropComponent" parent="." unique_id=1360232755 node_paths=PackedStringArray("health_component") instance=ExtResource("3_v8t1l")]
 drop_rate = 0.35
 health_component = NodePath("../HealthComponent")
 
-[node name="VelocityComponent" parent="." instance=ExtResource("4_7n42o")]
+[node name="VelocityComponent" parent="." unique_id=1780265544 instance=ExtResource("4_7n42o")]
 
-[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_4kqgf")]
+[node name="HitFlashComponent" parent="." unique_id=745641023 node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_4kqgf")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_ollop")
+hit_flash_material = SubResource("ShaderMaterial_jimn8")
 
-[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_j8jii")]
+[node name="HitFlashComponent" parent="HitFlashComponent" unique_id=1725740535 node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_4kqgf")]
+health_component = NodePath("../../HealthComponent")
+sprite = NodePath("../../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_qku51")
+
+[node name="DeathComponent" parent="." unique_id=876621531 node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_j8jii")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 
-[node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("10_74ju1")]
+[node name="HitRandomAudioPlayerComponent" parent="." unique_id=1100816959 instance=ExtResource("10_74ju1")]
 max_distance = 300.0
 streams = Array[AudioStream]([ExtResource("10_d8kjc"), ExtResource("12_2b1bb"), ExtResource("13_oy0ft"), ExtResource("14_6oeop"), ExtResource("15_yavv3")])
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_e2gan")]
+[node name="HurtboxComponent" parent="." unique_id=1356059400 node_paths=PackedStringArray("health_component") instance=ExtResource("4_e2gan")]
 health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=667656209]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_5yb0v")
 debug_color = Color(0.991942, 0, 0.258832, 0.42)
 
-[node name="Visuals" type="Node2D" parent="."]
+[node name="Visuals" type="Node2D" parent="." unique_id=967572322]
 
-[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+[node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=1979624211]
 texture = ExtResource("1_m80w1")
 offset = Vector2(2.08165e-12, -4)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109954347]
 position = Vector2(2.08165e-12, -5)
 shape = SubResource("CircleShape2D_5o3ap")

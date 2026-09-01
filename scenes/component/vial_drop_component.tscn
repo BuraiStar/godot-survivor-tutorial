@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci3popyfx4vbv"]
+[gd_scene format=3 uid="uid://ci3popyfx4vbv"]
 
-[ext_resource type="Script" path="res://scenes/component/vial_drop_component.gd" id="1_hqusn"]
-[ext_resource type="PackedScene" uid="uid://c8j2qneyiwkhy" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="2_de64x"]
+[ext_resource type="Script" uid="uid://566i8ivw5ja1" path="res://scenes/component/vial_drop_component.gd" id="1_hqusn"]
+[ext_resource type="PackedScene" uid="uid://dxwqtebujte6r" path="res://scenes/game_object/gold_drop/gold_drop.tscn" id="2_txokj"]
 
-[node name="VialDropComponent" type="Node"]
+[node name="VialDropComponent" type="Node" unique_id=1978476532]
 script = ExtResource("1_hqusn")
-vial_scene = ExtResource("2_de64x")
+gold_drop = ExtResource("2_txokj")

@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dxwqtebujte6r"]
+
+[ext_resource type="Script" uid="uid://c6pgww621l61v" path="res://scenes/game_object/gold_drop/gold_drop.gd" id="1_k5jhv"]
+[ext_resource type="PackedScene" uid="uid://bh478361trp2r" path="res://scenes/component/random_audio_stream_player_2d_component.tscn" id="2_wv8be"]
+[ext_resource type="AudioStream" uid="uid://bynum3obom3gc" path="res://assets/audio/drop_001.ogg" id="3_k7icd"]
+[ext_resource type="AudioStream" uid="uid://0n02txoakffv" path="res://assets/audio/drop_004.ogg" id="4_48xp0"]
+[ext_resource type="Texture2D" uid="uid://ikmsb6blo3au" path="res://scenes/game_object/gold_drop/gold_drop.png" id="5_4l1p7"]
+[ext_resource type="Texture2D" uid="uid://d3chr1utt02m8" path="res://scenes/game_object/gold_drop/gold_shine.png" id="6_tct40"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xs8ts"]
+radius = 16.0
+
+[sub_resource type="Curve" id="Curve_fu20k"]
+_limits = [-9.968792, 10.561008, 0.0, 1.0]
+_data = [Vector2(0, -9.968792), 0.0, 0.0, 0, 0, Vector2(1, 10.561008), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5x4vr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[node name="GoldDrop" type="Node2D" unique_id=305002965]
+position = Vector2(62.205, 27.255)
+script = ExtResource("1_k5jhv")
+
+[node name="RandomAudioStreamPlayer2DComponent" parent="." unique_id=1853742882 instance=ExtResource("2_wv8be")]
+scale = Vector2(0.984781, 1.04643)
+max_distance = 300.0
+streams = Array[AudioStream]([ExtResource("3_k7icd"), ExtResource("4_48xp0")])
+
+[node name="Area2D" type="Area2D" parent="." unique_id=557730586]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1173044882]
+shape = SubResource("CircleShape2D_xs8ts")
+debug_color = Color(1.15158e-07, 0.635899, 0.411579, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1976601405]
+texture = ExtResource("5_4l1p7")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1749554391]
+amount = 2
+texture = ExtResource("6_tct40")
+lifetime = 2.0
+emission_shape = 1
+emission_sphere_radius = 8.8
+gravity = Vector2(0, 0)
+angle_max = 15.0
+angle_curve = SubResource("Curve_fu20k")
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_5x4vr")
+color = Color(1, 1, 1, 0.64705884)
