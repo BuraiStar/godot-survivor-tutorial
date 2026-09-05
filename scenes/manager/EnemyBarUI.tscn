@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c7c0c8xt54xq2"]
+
+[node name="EnemyBarUi" type="Node" unique_id=398541572]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1213020564]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer" unique_id=1739077343]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1763750867]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer" unique_id=882754537]
+layout_mode = 2

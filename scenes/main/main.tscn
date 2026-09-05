@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bnu7ngqdh3vvq" path="res://scenes/ui/experience_bar.tscn" id="2_7max8"]
 [ext_resource type="PackedScene" uid="uid://vqjgdqb3t2ju" path="res://scenes/ui/end_screen.tscn" id="2_8tx6c"]
 [ext_resource type="PackedScene" uid="uid://c5kgkd7ly41sq" path="res://scenes/manager/experience_manager.tscn" id="4_ak51j"]
+[ext_resource type="PackedScene" uid="uid://5htxlfvsk7s4" path="res://scenes/ui/EnemyBarUI.tscn" id="5_th5th"]
 [ext_resource type="PackedScene" uid="uid://c5b76ailnfref" path="res://scenes/manager/upgrade_manager.tscn" id="6_08ukk"]
 [ext_resource type="PackedScene" uid="uid://gisddfn8bqx" path="res://scenes/ui/vignette.tscn" id="12_jgtmh"]
 
@@ -21,6 +22,10 @@ end_screen_scene = ExtResource("2_8tx6c")
 
 [node name="ArenaTimeUI" parent="." unique_id=1289077644 node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_sfy4a")]
 arena_time_manager = NodePath("../ArenaTimeManager")
+
+[node name="EnemyBarUI" parent="." unique_id=1581621167 instance=ExtResource("5_th5th")]
+offset = Vector2(0, 30)
+transform = Transform2D(1, 0, 0, 1, 0, 30)
 
 [node name="ExperienceBar" parent="." unique_id=1205241709 node_paths=PackedStringArray("experience_manager") instance=ExtResource("2_7max8")]
 experience_manager = NodePath("../ExperienceManager")
