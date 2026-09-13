@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bs80bhxw6qydx"]
+
+[ext_resource type="Script" uid="uid://jniqc2owvkrf" path="res://scenes/ability/Earthquake_ability_controller/earthquake_ability_controller.gd" id="1_6qg5e"]
+
+[node name="Node2D" type="Node2D" unique_id=2006754434]
+script = ExtResource("1_6qg5e")
+
+[node name="Timer" type="Timer" parent="." unique_id=351694833]
+autostart = true

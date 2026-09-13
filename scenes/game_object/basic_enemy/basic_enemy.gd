@@ -56,8 +56,8 @@ func _on_mouse_exit() -> void:
 func shake():
 	var tween = create_tween()
 
-	tween.tween_property(visuals, "position:x", -5.0, 0.05)
-	tween.tween_property(visuals, "position:x", 5.0, 0.05)
+	tween.tween_property(visuals, "position:x", -7.0, 0.05)
+	tween.tween_property(visuals, "position:x", 7.0, 0.05)
 	tween.tween_property(visuals, "position:x", -5.0, 0.05)
 	tween.tween_property(visuals, "position:x", 5.0, 0.05)
 	tween.tween_property(visuals, "position:x", 0.0, 0.05)

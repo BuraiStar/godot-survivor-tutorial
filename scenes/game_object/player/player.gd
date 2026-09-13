@@ -94,6 +94,19 @@ func on_health_changed():
 	GameEvents.emit_player_damaged()
 	update_health_display()
 	$HitRandomStreamPlayer.play_random()
+	
+func _physics_process(delta: float) -> void:
+	var mouse_position := get_global_mouse_position()
+	var direction = sign(mouse_position.x - global_position.x)
+
+	visuals.look_at(mouse_position)
+	
+	if direction != 1.0:
+		visuals.scale.x = -direction
+		visuals.scale.y = 1
+	elif direction != -1.0:
+		visuals.scale.x = direction;
+		visuals.scale.y = -1;
 
 
 func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):

@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dini725amwnfl"]
+[gd_scene format=3 uid="uid://dini725amwnfl"]
 
 [ext_resource type="Texture2D" uid="uid://hpmgxym8g133" path="res://scenes/ability/sword_ability/sword.png" id="1_65jmi"]
-[ext_resource type="Script" path="res://scenes/ability/sword_ability/sword_ability.gd" id="1_kdjon"]
+[ext_resource type="Script" uid="uid://bjmuch1q8nxwm" path="res://scenes/ability/sword_ability/sword_ability.gd" id="1_kdjon"]
 [ext_resource type="PackedScene" uid="uid://b07jrrt845lfp" path="res://scenes/component/hitbox_component.tscn" id="2_xrg4e"]
 
 [sub_resource type="Animation" id="Animation_jsajo"]
@@ -100,29 +100,27 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q5llv"]
 _data = {
-"RESET": SubResource("Animation_jsajo"),
-"swing": SubResource("Animation_slmra")
+&"RESET": SubResource("Animation_jsajo"),
+&"swing": SubResource("Animation_slmra")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2govn"]
 size = Vector2(30, 30)
 
-[node name="SwordAbility" type="Node2D"]
+[node name="SwordAbility" type="Node2D" unique_id=1499001622]
 script = ExtResource("1_kdjon")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_q5llv")
-}
-autoplay = "swing"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=845017080]
+libraries/ = SubResource("AnimationLibrary_q5llv")
+autoplay = &"swing"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=956489813]
 texture = ExtResource("1_65jmi")
 offset = Vector2(2.08165e-12, -4)
 
-[node name="HitboxComponent" parent="." instance=ExtResource("2_xrg4e")]
+[node name="HitboxComponent" parent="." unique_id=836921461 instance=ExtResource("2_xrg4e")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1075980720]
 position = Vector2(15, 0)
 shape = SubResource("RectangleShape2D_2govn")
 disabled = true
