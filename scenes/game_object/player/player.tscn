@@ -126,7 +126,7 @@ acceleration = 25.0
 [node name="Abilities" type="Node" parent="." unique_id=166235212]
 
 [node name="EarthquakeAbilityController" parent="Abilities" unique_id=1262095991 instance=ExtResource("4_gbew5")]
-earthquake_ability = ExtResource("5_oxhc3")
+ability = ExtResource("5_oxhc3")
 
 [node name="HitRandomStreamPlayer" parent="." unique_id=1003900137 instance=ExtResource("5_h4wrb")]
 streams = Array[AudioStream]([ExtResource("6_nkk6h"), ExtResource("7_o48fe"), ExtResource("8_67nyn"), ExtResource("9_4kg8n"), ExtResource("10_fa7we")])

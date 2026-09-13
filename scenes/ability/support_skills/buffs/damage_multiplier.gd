@@ -1,11 +1,12 @@
-extends Node
+extends SupportSkill
 
+var multiplierDamage = 1.3;
+var multiplier_damage_per_level = 0.1;
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	trigger_time = TriggerTime.ONREADY;
+	max_level_of_support_gem = 5;
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func buff_effect(args: Dictionary):
+	args["damage_multiplier"] *= multiplierDamage + (multiplier_damage_per_level * (level_of_support_gem-1))
+	return args;

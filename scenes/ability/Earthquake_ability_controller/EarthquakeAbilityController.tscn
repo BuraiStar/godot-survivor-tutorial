@@ -1,9 +1,40 @@
 [gd_scene format=3 uid="uid://bs80bhxw6qydx"]
 
 [ext_resource type="Script" uid="uid://jniqc2owvkrf" path="res://scenes/ability/Earthquake_ability_controller/earthquake_ability_controller.gd" id="1_6qg5e"]
+[ext_resource type="Script" uid="uid://c4qx2ds2ief82" path="res://scenes/ability/support_skills/buffs/faster_attack.gd" id="2_6qg5e"]
+[ext_resource type="PackedScene" uid="uid://7ijmcp750y7o" path="res://scenes/ability/Earthquake_ability/earthquake_ability.tscn" id="2_k8c5n"]
+[ext_resource type="Script" uid="uid://bcyscmhx3e8bh" path="res://scenes/ability/support_skills/buffs/bigger_area.gd" id="4_ju047"]
 
 [node name="Node2D" type="Node2D" unique_id=2006754434]
 script = ExtResource("1_6qg5e")
+ability = ExtResource("2_k8c5n")
 
 [node name="Timer" type="Timer" parent="." unique_id=351694833]
+wait_time = 2.0
 autostart = true
+
+[node name="Modifiers" type="Node" parent="." unique_id=179498866]
+
+[node name="Node2D" type="Node2D" parent="Modifiers" unique_id=222483165]
+script = ExtResource("2_6qg5e")
+
+[node name="Node2D2" type="Node2D" parent="Modifiers" unique_id=1458831236]
+script = ExtResource("2_6qg5e")
+
+[node name="Node2D3" type="Node2D" parent="Modifiers" unique_id=1226423975]
+script = ExtResource("2_6qg5e")
+
+[node name="Node2D4" type="Node2D" parent="Modifiers" unique_id=2077429715]
+script = ExtResource("2_6qg5e")
+
+[node name="Node2D5" type="Node2D" parent="Modifiers" unique_id=156279423]
+script = ExtResource("4_ju047")
+
+[node name="Node2D6" type="Node2D" parent="Modifiers" unique_id=982608451]
+script = ExtResource("4_ju047")
+
+[node name="Node2D7" type="Node2D" parent="Modifiers" unique_id=2730343]
+script = ExtResource("4_ju047")
+
+[node name="Node2D8" type="Node2D" parent="Modifiers" unique_id=10694357]
+script = ExtResource("4_ju047")

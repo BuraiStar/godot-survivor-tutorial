@@ -28,9 +28,6 @@ metadata/_custom_type_script = "uid://b5i0rjr2h4itl"
 shape = SubResource("CircleShape2D_6m4ps")
 disabled = true
 
-[node name="ActivateTimer" type="Timer" parent="." unique_id=1138948877]
-autostart = true
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1065982374]
 stream = ExtResource("4_5djgs")
 autoplay = true
