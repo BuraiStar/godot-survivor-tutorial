@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c5kgkd7ly41sq" path="res://scenes/manager/experience_manager.tscn" id="4_ak51j"]
 [ext_resource type="PackedScene" uid="uid://5htxlfvsk7s4" path="res://scenes/ui/EnemyBarUI.tscn" id="5_th5th"]
 [ext_resource type="PackedScene" uid="uid://c5b76ailnfref" path="res://scenes/manager/upgrade_manager.tscn" id="6_08ukk"]
+[ext_resource type="Script" uid="uid://dfe4kyoy2labt" path="res://scenes/manager/audio_manager.gd" id="11_7smn1"]
 [ext_resource type="PackedScene" uid="uid://gisddfn8bqx" path="res://scenes/ui/vignette.tscn" id="12_jgtmh"]
 
 [node name="Main" type="Node" unique_id=851266985]
@@ -39,6 +40,9 @@ arena_time_manager = NodePath("../ArenaTimeManager")
 
 [node name="UpgradeManager" parent="." unique_id=536516356 node_paths=PackedStringArray("experience_manager") instance=ExtResource("6_08ukk")]
 experience_manager = NodePath("../ExperienceManager")
+
+[node name="AudioManager" type="Node" parent="." unique_id=1214010862]
+script = ExtResource("11_7smn1")
 
 [node name="GameCamera" parent="." unique_id=1684813017 instance=ExtResource("1_4i4ay")]
 position = Vector2(2, 1)

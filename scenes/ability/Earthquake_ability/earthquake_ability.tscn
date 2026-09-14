@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://g4s2ba82cgnt" path="res://scenes/ability/Earthquake_ability/earthquake_ability.gd" id="1_gl4xk"]
 [ext_resource type="Texture2D" uid="uid://bbq0oleh70ml" path="res://assets/temp/Circle.png" id="2_5djgs"]
 [ext_resource type="Script" uid="uid://b5i0rjr2h4itl" path="res://scenes/component/hitbox_component.gd" id="2_6qdj7"]
-[ext_resource type="AudioStream" uid="uid://vx3cm6218dmj" path="res://assets/audio/SoundEffect/Earthquake.mp3" id="4_5djgs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6m4ps"]
 radius = 20.0
@@ -27,10 +26,6 @@ metadata/_custom_type_script = "uid://b5i0rjr2h4itl"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1620286590]
 shape = SubResource("CircleShape2D_6m4ps")
 disabled = true
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1065982374]
-stream = ExtResource("4_5djgs")
-autoplay = true
 
 [node name="KillTimer" type="Timer" parent="." unique_id=1437273241]
 wait_time = 2.5

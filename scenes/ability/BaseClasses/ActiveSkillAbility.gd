@@ -8,6 +8,8 @@ var skill_stats := {
 	"range_multiplier": 1.0,
 	"area_multiplier": 1.0,
 	"MAX_RANGE": 100,
+	"fork": 0,
+	"fork_projectiles": 2
 }
 
 @export var ability: PackedScene
