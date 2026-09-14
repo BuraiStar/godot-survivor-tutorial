@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d1jblkch5v4g7"]
+
+[ext_resource type="Script" uid="uid://bmhtqlqxwnm7i" path="res://scenes/ability/BowSkills/LightningArrowController/lightning_arrow_controller.gd" id="1_qapm6"]
+[ext_resource type="AudioStream" uid="uid://b1wkllyig7bxg" path="res://assets/audio/SoundEffect/BowReleaseArrow.mp3" id="1_sbgh5"]
+[ext_resource type="PackedScene" uid="uid://bjsvfa208boqi" path="res://scenes/ability/BowSkills/LightningArrow/lightning_arrow.tscn" id="2_xxew0"]
+
+[node name="LightningArrowController" type="Node2D" unique_id=1114105624]
+script = ExtResource("1_qapm6")
+ability = ExtResource("2_xxew0")
+
+[node name="Timer" type="Timer" parent="." unique_id=619983235]
+wait_time = 0.7
+
+[node name="Modifiers" type="Node" parent="." unique_id=1225082690]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1502818796]
+stream = ExtResource("1_sbgh5")

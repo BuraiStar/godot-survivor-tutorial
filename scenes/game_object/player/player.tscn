@@ -4,9 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://jgxfupesel5x" path="res://scenes/game_object/player/player.png" id="1_gkmqs"]
 [ext_resource type="PackedScene" uid="uid://d32bhk07dm6w8" path="res://scenes/component/health_component.tscn" id="2_3j6hq"]
 [ext_resource type="PackedScene" uid="uid://cn4jjvvblm8lp" path="res://scenes/component/velocity_component.tscn" id="2_c31g4"]
-[ext_resource type="PackedScene" uid="uid://bs80bhxw6qydx" path="res://scenes/ability/Earthquake_ability_controller/EarthquakeAbilityController.tscn" id="4_gbew5"]
+[ext_resource type="PackedScene" uid="uid://d1jblkch5v4g7" path="res://scenes/ability/BowSkills/LightningArrowController/lightning_arrow_controller.tscn" id="4_gbew5"]
 [ext_resource type="PackedScene" uid="uid://bh478361trp2r" path="res://scenes/component/random_audio_stream_player_2d_component.tscn" id="5_h4wrb"]
-[ext_resource type="PackedScene" uid="uid://7ijmcp750y7o" path="res://scenes/ability/Earthquake_ability/earthquake_ability.tscn" id="5_oxhc3"]
 [ext_resource type="AudioStream" uid="uid://c0iqpwbocebd6" path="res://assets/audio/impactMining_000.ogg" id="6_nkk6h"]
 [ext_resource type="AudioStream" uid="uid://dm8gccs8o2f2w" path="res://assets/audio/impactMining_001.ogg" id="7_o48fe"]
 [ext_resource type="AudioStream" uid="uid://da0jqosvsg5rw" path="res://assets/audio/impactMining_002.ogg" id="8_67nyn"]
@@ -125,8 +124,7 @@ acceleration = 25.0
 
 [node name="Abilities" type="Node" parent="." unique_id=166235212]
 
-[node name="EarthquakeAbilityController" parent="Abilities" unique_id=1262095991 instance=ExtResource("4_gbew5")]
-ability = ExtResource("5_oxhc3")
+[node name="LightningArrowController" parent="Abilities" unique_id=1114105624 instance=ExtResource("4_gbew5")]
 
 [node name="HitRandomStreamPlayer" parent="." unique_id=1003900137 instance=ExtResource("5_h4wrb")]
 streams = Array[AudioStream]([ExtResource("6_nkk6h"), ExtResource("7_o48fe"), ExtResource("8_67nyn"), ExtResource("9_4kg8n"), ExtResource("10_fa7we")])

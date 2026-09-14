@@ -21,7 +21,12 @@ func on_area_entered(other_area: Area2D):
 
 	var hitbox_component = other_area as HitboxComponent
 	health_component.damage(hitbox_component.damage)
-
+	print("HURTBOX: pre hit signal emitted")
+	hitbox_component.hit.emit(
+		global_position,
+		self
+	)
+	print("HURTBOX: hit signal emitted")
 	var floating_text = floating_text_scene.instantiate() as FloatingText
 	get_tree().get_first_node_in_group("foreground_layer").add_child(floating_text)
 

@@ -12,6 +12,8 @@ var trigger_time : TriggerTime = TriggerTime.ONREADY;
 
 var level_of_support_gem: int = 1;
 var max_level_of_support_gem: int = 1;
+var current_exp: int = 1;
+var max_exp: int = 100;
 
 func buff_effect(args: Dictionary) :
 	pass
@@ -24,5 +26,14 @@ func on_hit_effect():
 	
 func post_hit_effect():
 	pass
+	
+func gemsGainEXP(exp_gained):
+	if level_of_support_gem >= max_level_of_support_gem: 
+		return
+		
+	current_exp += exp_gained;
+	if current_exp >= max_exp && level_of_support_gem < max_level_of_support_gem:
+		current_exp -= max_exp
+		level_of_support_gem += max_level_of_support_gem;
 	
 	
